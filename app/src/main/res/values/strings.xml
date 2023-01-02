@@ -1,0 +1,47 @@
+<resources>
+    <string name="page_title">Latest news</string>
+    <string name="app_name">News aggregator app</string>
+    <string name="title1">COP27: Climate anxiety is rising - it might be a good thing</string>
+    <string name="title2">Astronomers Discover Closest Black Hole to Earth – In Our Cosmic Backyard</string>
+    <string name="title3">National bank holiday announced for coronation of King Charles III</string>
+    <string name="title4">Mercedes</string>
+    <string name="title5">Haas</string>
+    <string name="title6">Mclaren</string>
+    <string name="title7">Alpine</string>
+    <string name="title8">Red Bull</string>
+    <string name="title9">Alpha Tauri</string>
+    <string name="title10">Williams</string>
+    <string name="kimi">Kimi </string>
+    <string name="drivers">Team Lineup </string>
+    <string name="gio">Antonio Giovinazzi</string>
+    <string name="alfa_info">Italian motor manufacturer Alfa Romeo has participated many times in Formula One. It currently participates as Alfa Romeo Racing while being operated by Sauber Motorsport AG. The brand has competed in motor racing as both a constructor and engine supplier sporadically between 1950 and 1987, and later as a commercial partner since 2015. The company\'s works drivers won the first two World Drivers\' Championships in the pre-war Alfetta: Nino Farina in 1950; and Juan Manuel Fangio in 1951. Following these successes Alfa Romeo withdrew from Formula One.</string>
+    <string name="msg">are the best!</string>
+    <string name="refresh_but_text">REFRESH</string>
+    <string name="settings_but_text">SETTINGS</string>
+    <string name="logout_but_text">LOG OUT</string>
+    <string name="search_but_text">SEARCH</string>
+
+    <string name="summary1">Global leaders are about to meet for another UN climate summit - COP27 starting in Sharm el-Sheikh on Sunday - and the reality of climate change for many people can be overwhelming.</string>
+    <string name="summary2">Astronomers using the International Gemini Observatory, have uncovered the closest-known black hole to Earth. It is also the first unambiguous detection of a dormant stellar-mass black hole in the Milky Way. Its close proximity to Earth, a mere 1600 light-years away, offers an intriguing target of study to advance our understanding of the evolution of binary systems.</string>
+    <string name="summary3">There will be a national bank holiday on May 8 next year to mark the Royal Coronation.
+The coronation of King Charles III will take place two days before at Westminster Abbey on Saturday, May 6.
+The bank holiday will take place across the UK.</string>
+
+    <string name="password_hint">password</string>
+    <string name="username_hint">username</string>
+    <string name="login_message">Please enter your username and password</string>
+    <string name="sign_in_but">SIGN IN</string>
+    <string name="radio_but_new_user">I\'m a new user</string>
+    <string name="radio_but_old_user">I\'ve been here before</string>
+    <string name="topic_selector_msg">Select the topics you are interested in.</string>
+    <string name="confirm_but">CONFIRM</string>
+
+    <string name="technology">Technology</string>
+    <string name="environmental">Environmental</string>
+    <string name="sport">Sport</string>
+    <string name="politics">Politics</string>
+    <string name="business">Business</string>
+    <string name="science">Science</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="weather">Weather</string>
+</resources>

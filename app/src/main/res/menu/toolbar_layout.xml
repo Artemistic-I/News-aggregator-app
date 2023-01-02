@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/refresh"
+        android:icon="@drawable/refresh_icon"
+        app:showAsAction="ifRoom"
+        android:title="@string/refresh_but_text">
+    </item>
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/search_icon"
+        app:showAsAction="ifRoom"
+        android:title="@string/search_but_text">
+    </item>
+    <item
+        android:id="@+id/logout_but"
+        android:title="@string/logout_but_text">
+    </item>
+    <item
+        android:id="@+id/settings_but"
+        android:title="@string/settings_but_text">
+    </item>
+</menu>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/selector_linear_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TopicSelector"
+    android:orientation="vertical">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/selector_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/toolbar">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/selector_activity_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/topic_selector_msg"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:background="@color/transparent"
+            android:textAlignment="center"
+            android:textColor="@color/light_orange"/>
+    </com.google.android.material.appbar.MaterialToolbar>
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/tech_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        style="@style/topic_selector"
+        android:text="@string/technology" />
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/environmental_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/topic_selector"
+        android:text="@string/environmental"
+        />
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/sport_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/topic_selector"
+        android:text="@string/sport" />
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/politics_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/topic_selector"
+        android:text="@string/politics" />
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/business_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/topic_selector"
+        android:text="@string/business" />
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/science_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/topic_selector"
+        android:text="@string/science" />
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/entertainment_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/topic_selector"
+        android:text="@string/entertainment" />
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/weather_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/topic_selector"
+        android:text="@string/weather" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/confirm_but"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:text="@string/confirm_but"
+        android:layout_gravity="right"
+        android:layout_marginEnd="50dp"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,7 +1,13 @@
 package com.example.newsaggregatorapp
 
+import android.util.Log
+import org.joda.time.format.ISODateTimeFormat
+import org.json.JSONObject
+import java.time.Instant
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-//import org.joda.time.format.ISODateTimeFormat
+import java.util.*
+
 /*
  * Data model class to store article data
  */
@@ -42,7 +48,8 @@ class MyModel {
     //***********************************
 
     fun getArticleContent(): String {
-        return content.toString()
+        val str = content.toString()
+        return str.substring(0, str.indexOf('['))
     }
     fun setArticleContent(content: String) {
         this.content = content
@@ -54,7 +61,8 @@ class MyModel {
         return sourceName.toString()
     }
     fun setArticleSourceName(sourceName: String) {
-        this.sourceName = sourceName
+        val source = JSONObject(sourceName)
+        this.sourceName = "source: " + source.getString("name")
     }
 
     //***********************************
@@ -63,7 +71,10 @@ class MyModel {
         return publishedAt.toString()
     }
     fun setArticlePublishedAt(publishedAt: String) {
-        //val parser : DateTimeFormatter = ISODateTimeFormat.basicOrdinalDateTimeNoMillis()
-        this.publishedAt = publishedAt
+        val Formatter = DateTimeFormatter.ofPattern("'published at 'h:mma dd MMM").withLocale( Locale.UK).withZone(ZoneId.of("UTC"))
+        //Instant.parse(publishedAt)
+        Log.d("=================", publishedAt)
+        val smth = Instant.parse(publishedAt)
+        this.publishedAt = Formatter.format(smth)
     }
 }

@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         val mToolbar = findViewById<Toolbar>(R.id.toolbar_main)
         setSupportActionBar(mToolbar)
 
-        /*populateNewsList() {returnedData ->
+        /*
+        populateNewsList() {returnedData ->
             recyclerView.layoutManager = layoutManager
             mAdapter = MyAdapter(returnedData)
             recyclerView.adapter = mAdapter
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
         mAdapter = MyAdapter(extractData(response2))
         recyclerView.adapter = mAdapter
+
 
         swipeRefresh = findViewById(R.id.swipeRefresh)
         swipeRefresh.setOnRefreshListener {

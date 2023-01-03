@@ -11,4 +11,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="toolbar">#262626</color>
+    <color name="dark_grey">#343434</color>
+    <color name="dark_white">#E4E4E4</color>
 </resources>

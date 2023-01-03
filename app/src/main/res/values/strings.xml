@@ -1,5 +1,5 @@
 <resources>
-    <string name="page_title">Latest news</string>
+    <string name="page_title">Top articles</string>
     <string name="app_name">News aggregator app</string>
     <string name="title1">COP27: Climate anxiety is rising - it might be a good thing</string>
     <string name="title2">Astronomers Discover Closest Black Hole to Earth – In Our Cosmic Backyard</string>
@@ -44,4 +44,13 @@ The bank holiday will take place across the UK.</string>
     <string name="science">Science</string>
     <string name="entertainment">Entertainment</string>
     <string name="weather">Weather</string>
+    <string name="title_activity_web">web_activity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

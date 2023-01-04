@@ -39,11 +39,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/sign_in_but"
+        android:id="@+id/sign_in_btn"
         android:layout_width="224dp"
         android:layout_height="61dp"
         android:hapticFeedbackEnabled="true"
-        android:text="@string/sign_in_but"
+        android:text="@string/sign_in_btn"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,32 +52,20 @@
         app:layout_constraintTop_toBottomOf="@+id/input_password"
         app:layout_constraintVertical_bias="0.1" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="222dp"
-        android:layout_height="83dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/input_username"
+
+    <Button
+        android:id="@+id/reg_btn"
+        android:layout_width="224dp"
+        android:layout_height="61dp"
+        android:hapticFeedbackEnabled="true"
+        android:text="@string/reg_btn"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <RadioButton
-            android:id="@+id/radioButton1"
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:text="@string/radio_but_old_user"
-            android:textColor="@color/light_orange"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:text="@string/radio_but_new_user"
-            android:textColor="@color/light_orange"
-            android:textSize="18sp" />
-    </RadioGroup>
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_password"
+        app:layout_constraintVertical_bias="0.336" />
 
     <TextView
         android:id="@+id/login_msg_textview"
@@ -86,7 +74,7 @@
         android:text="@string/login_message"
         android:textColor="@color/light_orange"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintBottom_toTopOf="@+id/input_username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

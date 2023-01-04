@@ -1,26 +1,29 @@
 package com.example.newsaggregatorapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.koushikdutta.ion.Ion
 import org.json.JSONArray
-import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var mAdapter:MyAdapter
     lateinit var swipeRefresh:SwipeRefreshLayout
+
+    private var mAuth = FirebaseAuth.getInstance()
+    private var currentUser = mAuth.currentUser
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -30,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         val mToolbar = findViewById<Toolbar>(R.id.toolbar_main)
         setSupportActionBar(mToolbar)
 
+        //val signOutBtn = mToolbar.findViewById<Button>(R.id.logout_btn)
+        //signOutBtn.setOnClickListener()
         /*
         populateNewsList() {returnedData ->
             recyclerView.layoutManager = layoutManager
@@ -55,14 +60,22 @@ class MainActivity : AppCompatActivity() {
             swipeRefresh.setRefreshing(false)
         }
 
-        /*val newIntent = Intent(this, TopicSelector::class.java)
-        startActivity(newIntent)*/
+
     }
 
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate((R.menu.toolbar_layout), menu)
-        return super.onCreateOptionsMenu(menu)
+        val logOutBtn : MenuItem = menu.findItem(R.id.logout_btn)
+        logOutBtn.setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener {
+            Log.d("||||||||||||||||||||||||||", "it worked!!!")
+            mAuth.signOut()
+            val newIntent = Intent(this, LoginActivity::class.java)
+            startActivity(newIntent)
+            false
+        })
+        return true
+        //super.onCreateOptionsMenu(menu)
     }
 
     private fun populateNewsList(callback:(MutableList<MyModel>)->Unit) {
@@ -108,6 +121,7 @@ class MainActivity : AppCompatActivity() {
             imageModel.setArticleContent(myJSON.getString("content"))
             imageModel.setArticleSourceName(myJSON.getString("source"))
             imageModel.setArticlePublishedAt(myJSON.getString("publishedAt"))
+            imageModel.setArticleURL(myJSON.getString("url"))
             finalList.add(imageModel)
         }
         return finalList

@@ -1,7 +1,6 @@
 package com.example.newsaggregatorapp
 
 import android.util.Log
-import org.joda.time.format.ISODateTimeFormat
 import org.json.JSONObject
 import java.time.Instant
 import java.time.ZoneId
@@ -18,6 +17,7 @@ class MyModel {
     var content: String? = null
     var sourceName: String? = null
     var publishedAt: String? = null //time and date of publication
+    var url: String? = null
 
 
     fun getArticleTitle(): String {
@@ -58,11 +58,11 @@ class MyModel {
     //***********************************
 
     fun getArticleSourceName(): String {
-        return sourceName.toString()
+        val source = JSONObject(sourceName)
+        return "source: " + source.getString("name")
     }
     fun setArticleSourceName(sourceName: String) {
-        val source = JSONObject(sourceName)
-        this.sourceName = "source: " + source.getString("name")
+        this.sourceName = sourceName
     }
 
     //***********************************
@@ -76,5 +76,14 @@ class MyModel {
         Log.d("=================", publishedAt)
         val smth = Instant.parse(publishedAt)
         this.publishedAt = Formatter.format(smth)
+    }
+
+    //***********************************
+
+    fun getArticleURL(): String {
+        return url.toString()
+    }
+    fun setArticleURL(url: String) {
+        this.url = url
     }
 }

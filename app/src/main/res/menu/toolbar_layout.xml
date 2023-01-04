@@ -14,11 +14,11 @@
         android:title="@string/search_but_text">
     </item>
     <item
-        android:id="@+id/logout_but"
+        android:id="@+id/logout_btn"
         android:title="@string/logout_but_text">
     </item>
     <item
-        android:id="@+id/settings_but"
+        android:id="@+id/settings_btn"
         android:title="@string/settings_but_text">
     </item>
 </menu>

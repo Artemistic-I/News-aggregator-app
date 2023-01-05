@@ -5,4 +5,9 @@
         <item name="android:textColor">@color/light_orange</item>
         <item name="android:textSize">18sp</item>
     </style>
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/light_orange</item>
+        <item name="android:colorForeground">@color/teal_200</item>
+    </style>
 </resources>

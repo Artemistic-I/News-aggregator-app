@@ -69,7 +69,7 @@ class MyAdapter (private val imageModelArrayList: MutableList<MyModel>) : Recycl
 
         override fun onClick(v: View) {
             //Log.d("=======||||||||========", imageModelArrayList[getAdapterPosition()].getArticleURL())
-            val www = Uri.parse(imageModelArrayList[getAdapterPosition()].getArticleURL())
+            val www = Uri.parse(imageModelArrayList[adapterPosition].getArticleURL())
             val webIntent = Intent(Intent.ACTION_VIEW, www)
             myContext.startActivity(webIntent)
             /*val msg = titleView.text

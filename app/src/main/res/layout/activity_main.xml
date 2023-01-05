@@ -12,18 +12,26 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/purple_200">
+        android:layout_height="?attr/actionBarSize">
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar_main"
             app:title="@string/page_title"
+            app:titleTextColor="@color/teal_200"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize" />
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/AppTheme"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_marginTop="56dp"
+        android:layout_height="40dp"/>
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
+        android:layout_marginTop="45dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar_layout">

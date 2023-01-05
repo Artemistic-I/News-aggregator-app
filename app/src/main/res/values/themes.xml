@@ -13,6 +13,7 @@
         <item name="android:statusBarColor">@color/black</item>
         <!-- Customize your theme here. -->
         <item name="android:background">@color/dark_grey</item>
+        <item name="android:textColor">@color/teal_200</item>
     </style>
     <style name="Theme.NewsAggregatorApp.NoActionBar">
         <item name="windowActionBar">false</item>

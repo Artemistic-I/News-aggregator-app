@@ -7,48 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".TopicSelector"
     android:orientation="vertical">
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/selector_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/toolbar">
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/selector_activity_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/topic_selector_msg"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:background="@color/transparent"
-            android:textAlignment="center"
-            android:textColor="@color/light_orange"/>
-    </com.google.android.material.appbar.MaterialToolbar>
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/tech_checkbox"
+        android:id="@+id/breaking_news_checkbox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         style="@style/topic_selector"
-        android:text="@string/technology" />
+        android:text="@string/breaking_news" />
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/environmental_checkbox"
+        android:id="@+id/world_checkbox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/topic_selector"
-        android:text="@string/environmental"
+        android:text="@string/world"
         />
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/sport_checkbox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/topic_selector"
-        android:text="@string/sport" />
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/politics_checkbox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/topic_selector"
-        android:text="@string/politics" />
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/business_checkbox"
         android:layout_width="match_parent"
@@ -56,11 +28,11 @@
         style="@style/topic_selector"
         android:text="@string/business" />
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/science_checkbox"
+        android:id="@+id/technology_checkbox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/topic_selector"
-        android:text="@string/science" />
+        android:text="@string/technology" />
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/entertainment_checkbox"
         android:layout_width="match_parent"
@@ -68,13 +40,25 @@
         style="@style/topic_selector"
         android:text="@string/entertainment" />
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/weather_checkbox"
+        android:id="@+id/sports_checkbox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/topic_selector"
-        android:text="@string/weather" />
+        android:text="@string/sports" />
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/science_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/topic_selector"
+        android:text="@string/science" />
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/health_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/topic_selector"
+        android:text="@string/health" />
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/confirm_but"
+        android:id="@+id/confirm_btn"
         android:layout_width="140dp"
         android:layout_height="60dp"
         android:text="@string/confirm_btn"

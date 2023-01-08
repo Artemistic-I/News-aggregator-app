@@ -26,7 +26,12 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        getSharedPreferences("mypreference", Context.MODE_PRIVATE)
+            .edit()
+            .putBoolean("shouldBeRunning", false)
+            .commit()
+        val notifierService = Intent(this, NewsNotifierService::class.java)
+        stopService(notifierService)
         //check for login status
         if (currentUser != null) {
             val newIntent = Intent(this, MainActivity::class.java)

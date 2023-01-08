@@ -15,14 +15,6 @@
     <string name="topic_selector_msg">Select the topics you are interested in.</string>
     <string name="confirm_btn">CONFIRM</string>
 
-    <string name="technology">Technology</string>
-    <string name="environmental">Environmental</string>
-    <string name="sport">Sport</string>
-    <string name="politics">Politics</string>
-    <string name="business">Business</string>
-    <string name="science">Science</string>
-    <string name="entertainment">Entertainment</string>
-    <string name="weather">Weather</string>
     <string name="register_failure">Sorry you can\'t be registered with that username/password combination</string>
     <string name="login_failure">Couldn\'t sign in. Check that your login and password are correct and try again</string>
 
@@ -34,4 +26,24 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="breaking_news">breaking-news</string>
+    <string name="world">world</string>
+    <string name="business">business</string>
+    <string name="technology">technology</string>
+    <string name="entertainment">entertainment</string>
+    <string name="sports">sports</string>
+    <string name="science">science</string>
+    <string name="health">health</string>
+
+    <string-array name="topics">
+        <item name="@string/breaking_news"></item>
+        <item name="@string/world"></item>
+        <item name="@string/business"></item>
+        <item name="@string/technology"></item>
+        <item name="@string/entertainment"></item>
+        <item name="@string/sports"></item>
+        <item name="@string/science"></item>
+        <item name="@string/health"></item>
+    </string-array>
 </resources>

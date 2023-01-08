@@ -10,7 +10,15 @@
         android:title="@string/logout_but_text">
     </item>
     <item
+        android:id="@+id/start_service"
+        android:title="start_service">
+    </item>
+    <item
+        android:id="@+id/stop_service"
+        android:title="stop_service">
+    </item>
+    <item
         android:id="@+id/settings_btn"
-        android:title="@string/settings_but_text">
+        android:title="SETTINGS">
     </item>
 </menu>

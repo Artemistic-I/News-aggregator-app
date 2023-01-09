@@ -6,11 +6,13 @@ import android.app.NotificationManager
 import android.app.Service
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.koushikdutta.ion.Ion
 import org.json.JSONArray
 import java.util.*
@@ -18,11 +20,13 @@ import java.util.*
 
 class NewsNotifierService : Service() {
 
-    private val updateInterval:Long = 30 * 1000
+    private val updateInterval:Long = 15 * 60 * 1000
     private var notifHelp : MyNotificationHelper? = null
     private var category = "science"
     lateinit var notification: NotificationCompat.Builder
     private var serviceThread:Thread? = null
+    private var mAuth = FirebaseAuth.getInstance()
+    private var currentUser = mAuth.currentUser
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun postNotification(chan: Int, title:String, message:String) {
@@ -31,6 +35,10 @@ class NewsNotifierService : Service() {
         if (notificationBuilder != null) {
             notifHelp!!.notify(chan, notificationBuilder)
         }
+    }
+
+    override fun onCreate() {
+        super.onCreate()
     }
 
     override fun onBind(intent: Intent?): IBinder? {
@@ -57,7 +65,7 @@ class NewsNotifierService : Service() {
                         .getBoolean("isRunning", false)
                     if (needsRunning) {
                         Log.d("Service", "Service is running...+++++++")
-                        postNotification(101, "My notification", "Bla bla bla bla")
+                        sendUsefulNotification()
                         try {
                             Thread.sleep(updateInterval)
                         } catch (e: InterruptedException) {
@@ -104,9 +112,31 @@ class NewsNotifierService : Service() {
         super.onTaskRemoved(rootIntent)
         Log.d("AAAAAAAAAAAAA", "service task removed :(")
     }
+    private fun sendUsefulNotification() {
+        var pref = getSharedPreferences(currentUser?.email.toString(), Context.MODE_PRIVATE)
+        var preferedTopics = ArrayList<String>()
+        helper(pref, preferedTopics, "breaking-news")
+        helper(pref, preferedTopics, "world")
+        helper(pref, preferedTopics, "business")
+        helper(pref, preferedTopics, "technology")
+        helper(pref, preferedTopics, "entertainment")
+        helper(pref, preferedTopics, "sports")
+        helper(pref, preferedTopics, "science")
+        helper(pref, preferedTopics, "health")
 
-    private fun populateNewsList(callback:(MutableList<MyModel>)->Unit) {
-        var finalList = mutableListOf<MyModel>()
+        category = preferedTopics[(0..preferedTopics.size-1).random()]
+        populateNewsList() {returnedData ->
+            var data = extractData(returnedData)
+            postNotification(101, "New Article from "+category+" topic :)", data[0].getArticleTitle())
+        }
+    }
+    private fun helper(pref:SharedPreferences, preferedTopics:ArrayList<String>, topic:String) {
+        if (pref.getBoolean(topic, false)) {
+            preferedTopics.add(topic)
+        }
+    }
+
+    private fun populateNewsList(callback:(String)->Unit) {
         val apikey = "f55d7b936c917b95aa82a248e6c303bb"
         if (category == null) {
             category = "science"
@@ -119,7 +149,7 @@ class NewsNotifierService : Service() {
             .asString()
             .setCallback{ex, result ->
                 if (ex == null) {
-                    finalList = extractData(result)
+                    var finalList = result
                     MainActivity.DebugUtilis.v("==============", result)
                     Log.d("=============", "finalList isEmpty = " + finalList.isEmpty().toString())
                     callback(finalList)

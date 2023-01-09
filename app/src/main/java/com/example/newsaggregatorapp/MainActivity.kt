@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(newIntent)
             false
         })
-        val newsCategories: Array<String> = arrayOf("breaking-news", "world", "business", "technology", "entertainment", "sports", "science", "health")
+        val newsCategories: Array<String> = arrayOf(getString(R.string.breaking_news), getString(R.string.world), getString(R.string.business), getString(R.string.technology), getString(R.string.entertainment), getString(R.string.sports), getString(R.string.science), getString(R.string.health))
             //getString(R.string.breaking_news), getString(R.string.world), getString(R.string.business),
             //getString(R.string.technology), getString(R.string.entertainment), getString(R.string.sports),
             //getString(R.string.science), getString(R.string.health))

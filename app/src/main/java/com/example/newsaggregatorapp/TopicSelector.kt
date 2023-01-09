@@ -20,9 +20,9 @@ class TopicSelector : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         context = this
-        getSharedPreferences("mypreference", Context.MODE_WORLD_READABLE)
+        getSharedPreferences(getString(R.string.mypreference), Context.MODE_WORLD_READABLE)
             .edit()
-            .putBoolean("isRunning", false)
+            .putBoolean(getString(R.string.isRunning), false)
             .commit()
         setContentView(R.layout.activity_topic_selector)
 
@@ -35,7 +35,7 @@ class TopicSelector : AppCompatActivity() {
 
             // showing the back button in action bar
             actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.title = "Recieve notifications for:"
+            actionBar.title = getString(R.string.preferences_title)
         }
         val pref = getSharedPreferences(currentUser?.email.toString(), Context.MODE_PRIVATE)
         val breakingNewsBox = findViewById<CheckBox>(R.id.breaking_news_checkbox)
@@ -50,17 +50,17 @@ class TopicSelector : AppCompatActivity() {
         val confirmBtn = findViewById<Button>(R.id.confirm_btn)
         confirmBtn.setOnClickListener {v ->
             pref.edit()
-                .putBoolean("breaking-news", breakingNewsBox.isChecked)
-                .putBoolean("world", worldBox.isChecked)
-                .putBoolean("business", businessBox.isChecked)
-                .putBoolean("technology", technologyBox.isChecked)
-                .putBoolean("entertainment", entertainmentBox.isChecked)
-                .putBoolean("sports", sportsBox.isChecked)
-                .putBoolean("science", scienceBox.isChecked)
-                .putBoolean("health", healthBox.isChecked)
+                .putBoolean(getString(R.string.breaking_news), breakingNewsBox.isChecked)
+                .putBoolean(getString(R.string.world), worldBox.isChecked)
+                .putBoolean(getString(R.string.business), businessBox.isChecked)
+                .putBoolean(getString(R.string.technology), technologyBox.isChecked)
+                .putBoolean(getString(R.string.entertainment), entertainmentBox.isChecked)
+                .putBoolean(getString(R.string.sports), sportsBox.isChecked)
+                .putBoolean(getString(R.string.science), scienceBox.isChecked)
+                .putBoolean(getString(R.string.health), healthBox.isChecked)
                 .commit()
 
-            val snackbar = Snackbar.make(v, "preferences saved", Snackbar.LENGTH_LONG)
+            val snackbar = Snackbar.make(v, getString(R.string.preferences_saved), Snackbar.LENGTH_LONG)
             val tv: TextView = snackbar.view.findViewById(com.google.android.material.R.id.snackbar_text);
             tv.setTextColor(getColor(R.color.light_orange))
             snackbar.show()
@@ -69,14 +69,14 @@ class TopicSelector : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        getSharedPreferences("mypreference", Context.MODE_WORLD_READABLE)
+        getSharedPreferences(getString(R.string.mypreference), Context.MODE_WORLD_READABLE)
             .edit()
-            .putBoolean("isRunning", false)
+            .putBoolean(getString(R.string.isRunning), false)
             .commit()
         Timer().schedule(object : TimerTask() {
             override fun run() {
                 val notifierService = Intent(context, NewsNotifierService::class.java)
-                notifierService.putExtra("action", "stop")
+                notifierService.putExtra(getString(R.string.action), getString(R.string.stop))
                 startService(notifierService)
             }
         }, 1000)
@@ -85,31 +85,31 @@ class TopicSelector : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        getSharedPreferences("mypreference", Context.MODE_WORLD_READABLE)
+        getSharedPreferences(getString(R.string.mypreference), Context.MODE_WORLD_READABLE)
             .edit()
-            .putBoolean("isRunning", true)
+            .putBoolean(getString(R.string.isRunning), true)
             .commit()
         val notifierService = Intent(context, NewsNotifierService::class.java)
-        notifierService.putExtra("action", "start")
+        notifierService.putExtra(getString(R.string.action), getString(R.string.start))
         startService(notifierService)
     }
     private fun loadPreferences() {
         val pref = getSharedPreferences(currentUser?.email.toString(), Context.MODE_PRIVATE)
         val breakingNewsBox = findViewById<CheckBox>(R.id.breaking_news_checkbox)
-        breakingNewsBox.isChecked = pref.getBoolean("breaking-news", false)
+        breakingNewsBox.isChecked = pref.getBoolean(getString(R.string.breaking_news), false)
         val worldBox = findViewById<CheckBox>(R.id.world_checkbox)
-        worldBox.isChecked = pref.getBoolean("world", false)
+        worldBox.isChecked = pref.getBoolean(getString(R.string.world), false)
         val businessBox = findViewById<CheckBox>(R.id.business_checkbox)
-        businessBox.isChecked = pref.getBoolean("business", false)
+        businessBox.isChecked = pref.getBoolean(getString(R.string.business), false)
         val technologyBox = findViewById<CheckBox>(R.id.technology_checkbox)
-        technologyBox.isChecked = pref.getBoolean("technology", false)
+        technologyBox.isChecked = pref.getBoolean(getString(R.string.technology), false)
         val entertainmentBox = findViewById<CheckBox>(R.id.entertainment_checkbox)
-        entertainmentBox.isChecked = pref.getBoolean("entertainment", false)
+        entertainmentBox.isChecked = pref.getBoolean(getString(R.string.entertainment), false)
         val sportsBox = findViewById<CheckBox>(R.id.sports_checkbox)
-        sportsBox.isChecked = pref.getBoolean("sports", false)
+        sportsBox.isChecked = pref.getBoolean(getString(R.string.sports), false)
         val scienceBox = findViewById<CheckBox>(R.id.science_checkbox)
-        scienceBox.isChecked = pref.getBoolean("science", false)
+        scienceBox.isChecked = pref.getBoolean(getString(R.string.science), false)
         val healthBox = findViewById<CheckBox>(R.id.health_checkbox)
-        healthBox.isChecked = pref.getBoolean("health", false)
+        healthBox.isChecked = pref.getBoolean(getString(R.string.health), false)
     }
 }

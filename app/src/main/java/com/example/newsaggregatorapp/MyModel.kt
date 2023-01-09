@@ -72,7 +72,6 @@ class MyModel {
     }
     fun setArticlePublishedAt(publishedAt: String) {
         val Formatter = DateTimeFormatter.ofPattern("'published at 'h:mma dd MMM").withLocale( Locale.UK).withZone(ZoneId.of("UTC"))
-        //Instant.parse(publishedAt)
         Log.d("=================", publishedAt)
         val smth = Instant.parse(publishedAt)
         this.publishedAt = Formatter.format(smth)

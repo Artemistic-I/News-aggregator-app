@@ -20,13 +20,6 @@
             android:name=".NewsNotifierService"
             android:enabled="true"
             android:exported="false"></service>
-        <receiver
-            android:name=".AlarmReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="REFRESH_THIS" />
-            </intent-filter>
-        </receiver>
 
         <activity
             android:name=".TopicSelector"

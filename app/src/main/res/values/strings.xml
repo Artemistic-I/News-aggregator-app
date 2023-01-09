@@ -1,8 +1,6 @@
 <resources>
     <string name="page_title">Top articles</string>
     <string name="app_name">News aggregator app</string>
-    <string name="msg">are the best!</string>
-    <string name="refresh_but_text">REFRESH</string>
     <string name="settings_but_text">SETTINGS</string>
     <string name="logout_but_text">LOG OUT</string>
     <string name="search_but_text">SEARCH</string>
@@ -35,6 +33,36 @@
     <string name="sports">sports</string>
     <string name="science">science</string>
     <string name="health">health</string>
+
+    <string name="mypreference">mypreference</string>
+    <string name="isRunning">isRunning</string>
+    <string name="action">action</string>
+    <string name="stop">stop</string>
+    <string name="start">start</string>
+    <string name="searchQueryHint">Enter your query here</string>
+    <string name="api_key">f55d7b936c917b95aa82a248e6c303bb</string>
+    <string name="top_headlines_p1">https://gnews.io/api/v4/top-headlines?topic=</string>
+    <string name="user_agent">User_Agent</string>
+    <string name="user_agent_val">CSC306A at Swansea University</string>
+    <string name="accept">Accept</string>
+    <string name="type">application/json</string>
+    <string name="no_internet_msg">Check your internet connection and try again</string>
+    <string name="search_headlines_p1">https://gnews.io/api/v4/search?q=</string>
+
+    <string name="title">title</string>
+    <string name="image">image</string>
+    <string name="description">description</string>
+    <string name="content">content</string>
+    <string name="source">source</string>
+    <string name="published_at">publishedAt</string>
+    <string name="url">url</string>
+    <string name="source_tag">source: </string>
+    <string name="name">name</string>
+    <string name="preferences_saved">Your preferences were saved</string>
+    <string name="preferences_title">Recieve notifications for:</string>
+    <string name="spinner_title">News category</string>
+
+
 
     <string-array name="topics">
         <item name="@string/breaking_news"></item>

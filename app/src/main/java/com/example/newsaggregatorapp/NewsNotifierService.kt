@@ -150,7 +150,6 @@ class NewsNotifierService : Service() {
             .setCallback{ex, result ->
                 if (ex == null) {
                     var finalList = result
-                    MainActivity.DebugUtilis.v("==============", result)
                     Log.d("=============", "finalList isEmpty = " + finalList.isEmpty().toString())
                     callback(finalList)
                 }

@@ -4,21 +4,13 @@
     <item android:id="@+id/spinner"
         app:showAsAction="ifRoom"
         app:actionViewClass="android.widget.Spinner"
-        android:title="News Category"/>
+        android:title="@string/spinner_title"/>
     <item
         android:id="@+id/logout_btn"
         android:title="@string/logout_but_text">
     </item>
     <item
-        android:id="@+id/start_service"
-        android:title="start_service">
-    </item>
-    <item
-        android:id="@+id/stop_service"
-        android:title="stop_service">
-    </item>
-    <item
         android:id="@+id/settings_btn"
-        android:title="SETTINGS">
+        android:title="@string/settings_but_text">
     </item>
 </menu>

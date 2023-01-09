@@ -2,7 +2,6 @@ package com.example.newsaggregatorapp
 
 import android.content.Context
 import android.content.Intent
-import android.hardware.input.InputManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +9,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import java.util.*
@@ -19,18 +19,19 @@ class LoginActivity : AppCompatActivity() {
     private var mAuth = FirebaseAuth.getInstance()
     private var currentUser = mAuth.currentUser
 
-    //ui elements that are used a lot
+    //ui elements
     lateinit var emailText : EditText
     lateinit var pwText : EditText
     lateinit var loginBtn : Button
     lateinit var regBtn : Button
+
     lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getSharedPreferences("mypreference", Context.MODE_PRIVATE)
+        getSharedPreferences(getString(R.string.mypreference), Context.MODE_PRIVATE)
             .edit()
-            .putBoolean("isRunning", false)
+            .putBoolean(getString(R.string.isRunning), false)
             .commit()
 
         //check for login status
@@ -41,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         context = this
 
-        //set up those ui elements
+        //set up ui elements
         emailText = findViewById(R.id.input_username)
         pwText = findViewById(R.id.input_password)
         loginBtn = findViewById(R.id.sign_in_btn)
@@ -56,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
         Timer().schedule(object : TimerTask() {
             override fun run() {
                 val notifierService = Intent(context, NewsNotifierService::class.java)
-                notifierService.putExtra("action", "stop")
+                notifierService.putExtra(getString(R.string.action), getString(R.string.stop))
                 startService(notifierService)
             }
         }, 1000)
@@ -105,8 +106,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
     private fun displayMessage(view:View, msg:String) {
-        val sb = Snackbar.make(view, msg, Snackbar.LENGTH_SHORT)
-        sb.show()
+        val snackbar = Snackbar.make(view, msg, Snackbar.LENGTH_SHORT)
+        val sb: TextView = snackbar.view.findViewById(com.google.android.material.R.id.snackbar_text)
+        sb.setTextColor(getColor(R.color.light_orange))
+        snackbar.show()
     }
     private fun update() {
         currentUser = mAuth.currentUser

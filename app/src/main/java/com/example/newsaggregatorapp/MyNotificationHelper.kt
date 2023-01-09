@@ -5,7 +5,6 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.ContextWrapper
-import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -31,8 +30,6 @@ class MyNotificationHelper (base: Context) : ContextWrapper(base) {
         var channelID = CHANNEL_ONE_ID
         var icon = R.drawable.ic_main
 
-        //Create an intent when opening the notification
-        //val intent = Intent(this, FromNotif::class.java)
         when (num) {
             101 -> {
                 channelID = CHANNEL_ONE_ID

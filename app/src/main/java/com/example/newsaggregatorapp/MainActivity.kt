@@ -22,6 +22,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.koushikdutta.ion.Ion
 import org.json.JSONArray
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -40,16 +41,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getSharedPreferences("mypreference", Context.MODE_PRIVATE)
+        getSharedPreferences("mypreference", Context.MODE_WORLD_READABLE)
             .edit()
             .putBoolean("isRunning", false)
             .commit()
 
         context = this
-        getSharedPreferences("mypreference", Context.MODE_PRIVATE)
-            .edit()
-            .putBoolean("shouldBeRunning", false)
-            .commit()
 
         setContentView(R.layout.activity_main)
         recyclerView = findViewById<View>(R.id.news_recycler_view) as RecyclerView // Bind to the recyclerview in the layout
@@ -57,9 +54,6 @@ class MainActivity : AppCompatActivity() {
         val mToolbar = findViewById<Toolbar>(R.id.toolbar_main)
 
         setSupportActionBar(mToolbar)
-
-        //val signOutBtn = mToolbar.findViewById<Button>(R.id.logout_btn)
-        //signOutBtn.setOnClickListener()
 
         /*populateNewsList() {returnedData ->
             recyclerView.layoutManager = layoutManager
@@ -252,28 +246,28 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onStop() {
         startService()
-        /*getSharedPreferences("mypreference", Context.MODE_PRIVATE)
+        getSharedPreferences("mypreference", Context.MODE_WORLD_READABLE)
             .edit()
-            .putBoolean("shouldBeRunning", true)
-            .commit()*/
+            .putBoolean("isRunning", true)
+            .commit()
         super.onStop()
     }
     override fun onStart() {
-        stopService()
-        getSharedPreferences("mypreference", Context.MODE_PRIVATE)
+        getSharedPreferences("mypreference", Context.MODE_WORLD_READABLE)
             .edit()
-            .putBoolean("shouldBeRunning", false)
+            .putBoolean("isRunning", false)
             .commit()
+        Timer().schedule(object : TimerTask() {
+            override fun run() {
+                stopService()
+            }
+        }, 1000)
         Log.d("MMMMMMMMMMMMM", "Service stopped!")
         super.onStart()
     }
 
     override fun onDestroy() {
         Log.d("MMMMMMMMMMMMM", "Service started! (main activity destroyed)")
-        getSharedPreferences("mypreference", Context.MODE_PRIVATE)
-            .edit()
-            .putBoolean("shouldBeRunning", true)
-            .commit()
         super.onDestroy()
     }
 

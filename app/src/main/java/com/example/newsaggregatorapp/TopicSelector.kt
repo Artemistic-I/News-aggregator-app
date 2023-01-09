@@ -9,24 +9,22 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import java.util.*
 
 class TopicSelector : AppCompatActivity() {
 
     private var mAuth = FirebaseAuth.getInstance()
     private var currentUser = mAuth.currentUser
+    lateinit var context:Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val notifierService = Intent(this, NewsNotifierService::class.java)
-        notifierService.putExtra("action", "stop")
-        startService(notifierService)
-
-        getSharedPreferences("mypreference", Context.MODE_PRIVATE)
+        context = this
+        getSharedPreferences("mypreference", Context.MODE_WORLD_READABLE)
             .edit()
-            .putBoolean("shouldBeRunning", false)
+            .putBoolean("isRunning", false)
             .commit()
         setContentView(R.layout.activity_topic_selector)
-
 
         var actionBar = supportActionBar
 
@@ -71,7 +69,29 @@ class TopicSelector : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        getSharedPreferences("mypreference", Context.MODE_WORLD_READABLE)
+            .edit()
+            .putBoolean("isRunning", false)
+            .commit()
+        Timer().schedule(object : TimerTask() {
+            override fun run() {
+                val notifierService = Intent(context, NewsNotifierService::class.java)
+                notifierService.putExtra("action", "stop")
+                startService(notifierService)
+            }
+        }, 1000)
         loadPreferences()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        getSharedPreferences("mypreference", Context.MODE_WORLD_READABLE)
+            .edit()
+            .putBoolean("isRunning", true)
+            .commit()
+        val notifierService = Intent(context, NewsNotifierService::class.java)
+        notifierService.putExtra("action", "start")
+        startService(notifierService)
     }
     private fun loadPreferences() {
         val pref = getSharedPreferences(currentUser?.email.toString(), Context.MODE_PRIVATE)

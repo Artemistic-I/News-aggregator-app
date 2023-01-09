@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import java.util.*
 
 class LoginActivity : AppCompatActivity() {
     //authentication variables
@@ -23,22 +24,22 @@ class LoginActivity : AppCompatActivity() {
     lateinit var pwText : EditText
     lateinit var loginBtn : Button
     lateinit var regBtn : Button
+    lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getSharedPreferences("mypreference", Context.MODE_PRIVATE)
             .edit()
-            .putBoolean("shouldBeRunning", false)
+            .putBoolean("isRunning", false)
             .commit()
-        val notifierService = Intent(this, NewsNotifierService::class.java)
-        stopService(notifierService)
+
         //check for login status
         if (currentUser != null) {
             val newIntent = Intent(this, MainActivity::class.java)
             startActivity(newIntent)
         }
         setContentView(R.layout.activity_login)
-
+        context = this
 
         //set up those ui elements
         emailText = findViewById(R.id.input_username)
@@ -48,6 +49,17 @@ class LoginActivity : AppCompatActivity() {
 
         loginBtn.setOnClickListener{v -> loginClick(v)}
         regBtn.setOnClickListener{v -> regClick(v)}
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Timer().schedule(object : TimerTask() {
+            override fun run() {
+                val notifierService = Intent(context, NewsNotifierService::class.java)
+                notifierService.putExtra("action", "stop")
+                startService(notifierService)
+            }
+        }, 1000)
     }
     private fun loginClick(v : View) {
         try {

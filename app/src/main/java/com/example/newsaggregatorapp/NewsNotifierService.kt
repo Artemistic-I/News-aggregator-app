@@ -20,8 +20,7 @@ class NewsNotifierService : Service() {
 
     private val updateInterval:Long = 30 * 1000
     private var notifHelp : MyNotificationHelper? = null
-    private var category = "breaking-news"
-    private var isRunning = false
+    private var category = "science"
     lateinit var notification: NotificationCompat.Builder
     private var serviceThread:Thread? = null
 
@@ -41,7 +40,6 @@ class NewsNotifierService : Service() {
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         var str = intent.getStringExtra("action")
         if (str.equals("start")) {
-            isRunning = true
             getSharedPreferences("mypreference", Context.MODE_WORLD_READABLE)
                 .edit()
                 .putBoolean("isRunning", true)
@@ -55,17 +53,19 @@ class NewsNotifierService : Service() {
                     } catch (e: InterruptedException) {
                         e.printStackTrace()
                     }
-                    Log.d("Service", "Service is running...+++++++")
-                    postNotification(101, "My notification", "Bla bla bla bla")
-
-
-                    try {
-                        Thread.sleep(updateInterval)
-                    } catch (e: InterruptedException) {
-                        e.printStackTrace()
-                    }
                     needsRunning = getSharedPreferences("mypreference", Context.MODE_WORLD_READABLE)
                         .getBoolean("isRunning", false)
+                    if (needsRunning) {
+                        Log.d("Service", "Service is running...+++++++")
+                        postNotification(101, "My notification", "Bla bla bla bla")
+                        try {
+                            Thread.sleep(updateInterval)
+                        } catch (e: InterruptedException) {
+                            e.printStackTrace()
+                        }
+                        needsRunning = getSharedPreferences("mypreference", Context.MODE_WORLD_READABLE)
+                            .getBoolean("isRunning", false)
+                    }
                 }
             }
             serviceThread!!.start()
@@ -83,8 +83,7 @@ class NewsNotifierService : Service() {
             notifHelp = MyNotificationHelper(this)
             startForeground(1001, notification.build())
         } else if (str.equals("stop")) {
-            isRunning = false
-            getSharedPreferences("mypreference", Context.MODE_PRIVATE)
+            getSharedPreferences("mypreference", Context.MODE_WORLD_READABLE)
                 .edit()
                 .putBoolean("isRunning", false)
                 .commit()
